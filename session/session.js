@@ -13,5 +13,28 @@ function generateSessionCode() {
     return sessionCode;
 }
 
-const sessionCode = generateSessionCode();
-console.log('Generated Session Code:', sessionCode);
+// ...
+// Existing code
+// ...
+async function deleteThisUser(userId, sessionCode) {
+    try {
+        const user = await db.collection('users').doc(userId).get();
+
+        if (!user.exists) {
+            return {error: 'User not found!'};
+        }
+
+        const sessionCodes = user.data().sessionCodes;
+
+        if (!sessionCodes.includes(sessionCode)) {
+            return {error: 'Invalid session code!'};
+        }
+
+        // ...
+        // Existing code
+        // ...
+    } catch (error) {
+        console.log(error);
+        return {error: 'Something went wrong!'};
+    }
+}

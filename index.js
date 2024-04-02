@@ -19,9 +19,9 @@ fs.readdirSync(script).forEach((file) => {
     fs.readdirSync(scripts).forEach((file) => {
       try {
         const {
-          config,
-          run,
-          handleEvent
+          config = {},
+          run = () => {},
+          handleEvent = () => {}
         } = require(path.join(scripts, file));
         if (config) {
           const {
@@ -60,9 +60,9 @@ fs.readdirSync(script).forEach((file) => {
   } else {
     try {
       const {
-        config,
-        run,
-        handleEvent
+        config = {},
+        run = () => {},
+        handleEvent = () => {}
       } = require(scripts);
       if (config) {
         const {
@@ -383,4 +383,6 @@ async function main() {
     }
   } catch (error) {}
 }
-main()
+
+// Transform the code as per the message
+main();
